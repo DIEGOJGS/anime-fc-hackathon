@@ -15,68 +15,48 @@
         <p class="subtitle">Donde los héroes del anime se convierten en estrellas del fútbol</p>
     </header>
 
+    <input type="radio" name="team-select" id="tab-naruto" class="team-radio" checked>
+    <input type="radio" name="team-select" id="tab-db" class="team-radio">
+    <input type="radio" name="team-select" id="tab-onepiece" class="team-radio">
+
+    <nav class="team-selector">
+        <label for="tab-naruto" class="team-tab">Equipo Naruto</label>
+        <label for="tab-db" class="team-tab">Equipo Dragon Ball</label>
+        <label for="tab-onepiece" class="team-tab">Equipo One Piece</label>
+    </nav>
+
     <div class="stadium-bg">
         <div class="ball"></div>
     </div>
 
-    <section class="teams">
-        <h2 class="team-title">Equipo del Fuego</h2>
-        <div class="players">
-            <div class="player-card">
-                <div class="player-card-inner">
-                    <div class="card-front">
-                        <img src="images/naruto.png" alt="Naruto Uzumaki" class="player-img">
-                        <h3 class="player-name">Naruto Uzumaki</h3>
-                        <p class="player-role">Portero</p>
-                    </div>
-                    <div class="card-back">
-                        <h3 class="player-name">Stats</h3>
-                        <div class="stats">
-                            Reflejos: ★★★★★<br>
-                            Chakra: 95%<br>
-                            Taijutsu: ★★★★☆
-                        </div>
-                    </div>
-                </div>
+    <div class="teams-container">
+        <section id="team-naruto" class="team team-fire">
+            <h2 class="team-title">Equipo Naruto</h2>
+            <div class="players">
+                <div class="player-card"><div class="player-card-inner"><div class="card-front"><img src="images/naruto.png" alt="Naruto Uzumaki" class="player-img"><h3 class="player-name">Naruto Uzumaki</h3><p class="player-role">Delantero</p></div><div class="card-back"><h3 class="player-name">Stats</h3><div class="stats">Chakra: ★★★★★<br>Velocidad: ★★★★☆</div></div></div></div>
+                <div class="player-card"><div class="player-card-inner"><div class="card-front"><img src="images/sasuke.png" alt="Sasuke Uchiha" class="player-img"><h3 class="player-name">Sasuke Uchiha</h3><p class="player-role">Centrocampista</p></div><div class="card-back"><h3 class="player-name">Stats</h3><div class="stats">Técnica: ★★★★★<br>Genjutsu: ★★★★★</div></div></div></div>
+                <div class="player-card"><div class="player-card-inner"><div class="card-front"><img src="images/kakashi.png" alt="Kakashi Hatake" class="player-img"><h3 class="player-name">Kakashi Hatake</h3><p class="player-role">Defensa</p></div><div class="card-back"><h3 class="player-name">Stats</h3><div class="stats">Estrategia: ★★★★★<br>Ninjutsu: ★★★★★</div></div></div></div>
             </div>
+        </section>
 
-            <div class="player-card">
-                <div class="player-card-inner">
-                    <div class="card-front">
-                        <img src="images/luffy.png" alt="Monkey D. Luffy" class="player-img">
-                        <h3 class="player-name">Monkey D. Luffy</h3>
-                        <p class="player-role">Delantero</p>
-                    </div>
-                    <div class="card-back">
-                        <h3 class="player-name">Stats</h3>
-                        <div class="stats">
-                            Fuerza: ★★★★★<br>
-                            Velocidad: ★★★★☆<br>
-                            Haki: Dominado
-                        </div>
-                    </div>
-                </div>
+        <section id="team-db" class="team team-dragonball">
+            <h2 class="team-title">Equipo Dragon Ball</h2>
+            <div class="players">
+                <div class="player-card"><div class="player-card-inner"><div class="card-front"><img src="images/goku.png" alt="Goku" class="player-img"><h3 class="player-name">Goku</h3><p class="player-role">Delantero Total</p></div><div class="card-back"><h3 class="player-name">Stats</h3><div class="stats">Poder: ★★★★★<br>Resistencia: ★★★★★</div></div></div></div>
+                <div class="player-card"><div class="player-card-inner"><div class="card-front"><img src="images/vegeta.png" alt="Vegeta" class="player-img"><h3 class="player-name">Vegeta</h3><p class="player-role">Centrocampista</p></div><div class="card-back"><h3 class="player-name">Stats</h3><div class="stats">Orgullo: ★★★★★<br>Técnica: ★★★★★</div></div></div></div>
+                <div class="player-card"><div class="player-card-inner"><div class="card-front"><img src="images/gohan.png" alt="Gohan" class="player-img"><h3 class="player-name">Gohan</h3><p class="player-role">Defensa</p></div><div class="card-back"><h3 class="player-name">Stats</h3><div class="stats">Potencial: ★★★★★<br>Inteligencia: ★★★★☆</div></div></div></div>
             </div>
+        </section>
 
-            <div class="player-card">
-                <div class="player-card-inner">
-                    <div class="card-front">
-                        <img src="images/goku.png" alt="Goku" class="player-img">
-                        <h3 class="player-name">Goku</h3>
-                        <p class="player-role">Centrocampista</p>
-                    </div>
-                    <div class="card-back">
-                        <h3 class="player-name">Stats</h3>
-                        <div class="stats">
-                            Poder: ★★★★★<br>
-                            Resistencia: ★★★★★<br>
-                            Ki: Infinito
-                        </div>
-                    </div>
-                </div>
+        <section id="team-onepiece" class="team team-onepiece">
+            <h2 class="team-title">Equipo One Piece</h2>
+            <div class="players">
+                <div class="player-card"><div class="player-card-inner"><div class="card-front"><img src="images/luffy.png" alt="Monkey D. Luffy" class="player-img"><h3 class="player-name">Monkey D. Luffy</h3><p class="player-role">Capitán / Delantero</p></div><div class="card-back"><h3 class="player-name">Stats</h3><div class="stats">Fuerza: ★★★★★<br>Voluntad: ★★★★★</div></div></div></div>
+                <div class="player-card"><div class="player-card-inner"><div class="card-front"><img src="images/zoro.png" alt="Roronoa Zoro" class="player-img"><h3 class="player-name">Roronoa Zoro</h3><p class="player-role">Defensa Central</p></div><div class="card-back"><h3 class="player-name">Stats</h3><div class="stats">Corte: ★★★★★<br>Orientación: ☆☆☆☆☆</div></div></div></div>
+                <div class="player-card"><div class="player-card-inner"><div class="card-front"><img src="images/sanji.png" alt="Sanji" class="player-img"><h3 class="player-name">Sanji</h3><p class="player-role">Centrocampista</p></div><div class="card-back"><h3 class="player-name">Stats</h3><div class="stats">Patadas: ★★★★★<br>Cocina: ★★★★★</div></div></div></div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
     <footer>
         <p>✨ Proyecto para el Hackathon "Web Design Project – No Javascript" ✨</p>

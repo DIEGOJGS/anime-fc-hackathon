@@ -1,6 +1,9 @@
 /* ======================================================= */
 /* BLOQUE 1: VARIABLES GLOBALES Y RESET BÁSICO             */
 /* ======================================================= */
+/* Define los colores y valores que usaremos en toda la página.
+  Esto hace que cambiar un color en el futuro sea muy fácil.
+*/
 :root {
   --primary: #e74c3c;
   --secondary: #2c3e50;
@@ -10,6 +13,9 @@
   --field-green: #27ae60;
 }
 
+/* Reseteo universal. Quita todos los márgenes y paddings por defecto
+  de los navegadores para tener control total sobre el diseño.
+*/
 * {
   margin: 0;
   padding: 0;
@@ -19,6 +25,10 @@
 /* ======================================================= */
 /* BLOQUE 2: ESTILOS GENERALES DEL BODY                    */
 /* ======================================================= */
+/*
+  Estilos base para toda la página: tipografía, color de fondo,
+  color de texto y altura de línea.
+*/
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: linear-gradient(135deg, var(--dark), #0d0d0d);
@@ -28,14 +38,15 @@ body {
 }
 
 /* ======================================================= */
-/* BLOQUE 3: ESTILOS DEL ENCABEZADO (HEADER)               */
+/* BLOQUE 3: ENCABEZADO (HEADER)                           */
 /* ======================================================= */
+/*
+  Estilos para la sección superior que contiene el título principal
+  y el subtítulo.
+*/
 header {
   text-align: center;
   padding: 2rem 1rem;
-  background: rgba(0, 0, 0, 0.7);
-  position: relative;
-  z-index: 10;
 }
 
 h1 {
@@ -56,8 +67,42 @@ h1 {
 }
 
 /* ======================================================= */
-/* BLOQUE 4: ESTILOS DEL ESTADIO Y PELOTA                  */
+/* BLOQUE 4: NAVEGACIÓN DE EQUIPOS (TABS)                  */
 /* ======================================================= */
+/*
+  Estilos para los botones que permiten seleccionar los equipos.
+*/
+.team-selector {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.team-tab {
+  padding: 0.8rem 1.5rem;
+  background: var(--secondary);
+  color: var(--light);
+  border: 2px solid var(--secondary);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.team-tab:hover {
+  background: #3e5772;
+  border-color: var(--accent);
+}
+
+/* ======================================================= */
+/* BLOQUE 5: ESTADIO DECORATIVO                            */
+/* ======================================================= */
+/*
+  Estilos para el campo de fútbol decorativo y la pelota que
+  rebota.
+*/
 .stadium-bg {
   height: 200px;
   background: 
@@ -76,7 +121,6 @@ h1 {
   overflow: hidden;
 }
 
-/* Pelota animada */
 .ball {
   position: absolute;
   top: -30px;
@@ -89,14 +133,14 @@ h1 {
   transform: translateX(-50%);
 }
 
-@keyframes bounce {
-  0%, 100% { top: -30px; }
-  50% { top: 150px; }
-}
 /* ======================================================= */
-/* BLOQUE 5: ESTILOS DE LA SECCIÓN DE EQUIPOS              */
+/* BLOQUE 6: CONTENEDOR PRINCIPAL DE EQUIPOS               */
 /* ======================================================= */
-.teams {
+/*
+  Estilos generales para las secciones que contienen las
+  tarjetas de los jugadores.
+*/
+.teams-container {
   max-width: 1200px;
   margin: 0 auto 3rem;
   padding: 0 1.5rem;
@@ -119,44 +163,95 @@ h1 {
 }
 
 /* ======================================================= */
-/* BLOQUE 6: ESTILOS PARA LA TARJETA DE JUGADOR (CORREGIDO) */
+/* BLOQUE 7: TARJETA DE JUGADOR (PLAYER CARD)              */
 /* ======================================================= */
+/*
+  Aquí se definen todos los estilos de la tarjeta, incluyendo
+  su tamaño, fondo, bordes y la perspectiva 3D necesaria para el giro.
+  Esta es la versión FUSIONADA y CORREGIDA de tus reglas.
+*/
 .player-card {
   background: rgba(44, 62, 80, 0.85);
   border: 2px solid var(--primary);
   border-radius: 12px;
   width: 220px;
-  height: 300px; /* <--- AÑADE ESTA LÍNEA PARA DARLE ALTURA FIJA */
+  height: 300px;
   text-align: center;
-  perspective: 1000px; /* Mantenemos la perspectiva para el 3D */
+  perspective: 1000px;
 }
 
+/*
+  El contenedor interno que realmente gira en 3D.
+*/
+.player-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+/*
+  Al pasar el mouse sobre la tarjeta, el contenedor interno gira 180 grados.
+*/
+.player-card:hover .player-card-inner {
+  transform: rotateY(180deg);
+}
+
+/*
+  Estilos para la sombra y el borde cuando el mouse está encima.
+  Se aplica a la tarjeta principal, que no gira.
+*/
 .player-card:hover {
-  transform: translateY(-10px);
   box-shadow: 0 10px 25px rgba(231, 76, 60, 0.5);
   border-color: var(--accent);
 }
 
+/*
+  Define la apariencia de las dos caras de la tarjeta.
+  'backface-visibility: hidden' es clave para que no se vea la cara trasera.
+*/
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly; /* <--- CORRECCIÓN */
+  align-items: center;
+  background: inherit;
+  border-radius: inherit;
+  padding: 1.5rem;
+}
 
+/*
+  Gira la cara trasera para que esté "detrás" inicialmente y le da un
+  fondo diferente para distinguirla.
+*/
+.card-back {
+  transform: rotateY(180deg);
+  background: var(--secondary);
+}
 
+/*
+  Estilos para el contenido de la tarjeta: imagen, nombre y rol.
+*/
 .player-img {
   width: 100px;
   height: 100px;
-  background: linear-gradient(45deg, var(--primary), var(--accent));
   border-radius: 50%;
-  margin: 0 auto 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2.5rem;
-  color: white;
-  font-weight: bold;
+  margin-bottom: 1rem;
+  object-fit: contain; /* <-- ESTE ES EL CAMBIO PRINCIPAL */
+  background: rgba(0, 0, 0, 0.2); /* Fondo sutil para rellenar el círculo */
+  padding: 5px; /* Pequeño espacio para que la imagen no toque el borde */
 }
 
 .player-name {
   font-size: 1.4rem;
   margin-bottom: 0.5rem;
   color: white;
+  font-family: 'Bangers', cursive;
 }
 
 .player-role {
@@ -165,8 +260,37 @@ h1 {
   font-weight: bold;
 }
 
+.card-back .stats {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #ccc;
+}
+
 /* ======================================================= */
-/* BLOQUE 7: ESTILOS DEL PIE DE PÁGINA (FOOTER)            */
+/* BLOQUE 8: COLORES PERSONALIZADOS POR EQUIPO             */
+/* ======================================================= */
+/*
+  Redefine las variables de color para cada equipo específico.
+  Gracias a esto, solo cambiando la clase en el HTML, cambia el tema.
+*/
+.team-fire {
+  --primary: #e74c3c;
+  --accent: #f1c40f;
+}
+
+.team-dragonball {
+  --primary: #f39c12; /* Naranja */
+  --accent: #3498db;  /* Azul */
+}
+
+.team-onepiece {
+  --primary: #3498db; /* Azul Marino */
+  --accent: #e74c3c;  /* Rojo Sombrero */
+}
+
+
+/* ======================================================= */
+/* BLOQUE 9: PIE DE PÁGINA (FOOTER)                        */
 /* ======================================================= */
 footer {
   text-align: center;
@@ -177,108 +301,102 @@ footer {
 }
 
 /* ======================================================= */
-/* BLOQUE 8: DISEÑO RESPONSIVE PARA MÓVILES                */
+/* BLOQUE 10: ANIMACIONES (@keyframes)                     */
 /* ======================================================= */
+/*
+  Define la animación de la pelota rebotando.
+*/
+@keyframes bounce {
+  0%, 100% { top: -30px; }
+  50% { top: 150px; }
+}
+
+/* ======================================================= */
+/* BLOQUE 11: LÓGICA DE VISIBILIDAD DE PESTAÑAS            */
+/* ======================================================= */
+/*
+  Esta es la parte "mágica" que hace funcionar las pestañas sin JavaScript.
+*/
+/* Oculta los radio buttons por su nueva clase */
+.team-radio {
+  display: none;
+}
+
+.team {
+  display: none;
+}
+
+#tab-naruto:checked ~ .teams-container > #team-naruto {
+  display: block;
+}
+
+#tab-db:checked ~ .teams-container > #team-db {
+  display: block;
+}
+
+#tab-onepiece:checked ~ .teams-container > #team-onepiece {
+  display: block;
+}
+
+/* 3. Cambiamos el estilo del botón activo para cada equipo */
+#tab-naruto:checked + .team-tab {
+  background: #e74c3c;
+  border-color: #f1c40f;
+  box-shadow: 0 0 15px #e74c3c80;
+  transform: translateY(-5px) scale(1.05); /* <--- AÑADE ESTA LÍNEA */
+}
+
+#tab-db:checked + .team-tab {
+  background: #f39c12;
+  border-color: #3498db;
+  box-shadow: 0 0 15px #f39c1280;
+  transform: translateY(-5px) scale(1.05); /* <--- AÑADE ESTA LÍNEA */
+}
+
+#tab-onepiece:checked + .team-tab {
+  background: #3498db;
+  border-color: #e74c3c;
+  box-shadow: 0 0 15px #3498db80;
+  transform: translateY(-5px) scale(1.05); /* <--- AÑADE ESTA LÍNEA */
+}
+
+/* ======================================================= */
+/* BLOQUE 12: DISEÑO RESPONSIVE (MEDIA QUERIES)            */
+/* ======================================================= */
+/*
+  Ajustes para que la página se vea bien en pantallas más pequeñas,
+  como tabletas y móviles. Siempre deben ir al final.
+*/
 @media (max-width: 768px) {
   h1 {
     font-size: 2.5rem;
   }
   .player-card {
     width: 160px;
-    padding: 1rem;
+    height: 240px; /* Altura ajustada para móviles */
   }
   .player-img {
     width: 80px;
     height: 80px;
-    font-size: 2rem;
+  }
+  .card-front, .card-back {
+    padding: 1rem;
   }
 }
 
 @media (max-width: 480px) {
+  .team-selector {
+    gap: 0.5rem;
+    flex-wrap: wrap; /* Permite que los botones pasen a la siguiente línea */
+  }
+  .team-tab {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
   .players {
     gap: 1rem;
   }
   h1 {
     font-size: 2rem;
-  }
-}
-/* ======================================================= */
-/* MODIFICACIONES PARA EL EFECTO DE GIRO 3D                */
-/* ======================================================= */
-
-/* Modificar la tarjeta principal para habilitar la perspectiva */
-.player-card {
-  perspective: 1000px; /* Activa el espacio 3D */
-  /* Eliminar o comentar estas reglas si las tenías: */
-  /* transition: transform 0.3s, box-shadow 0.3s; */
-  /* position: relative; */
-  /* overflow: hidden; */
-  /* y el pseudo-elemento ::before ya no es necesario con el giro */
-}
-
-/* Contenedor interno que realmente rota */
-.player-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  transition: transform 0.6s; /* Transición para la rotación */
-  transform-style: preserve-3d; /* Permite que los hijos estén en 3D */
-}
-
-/* Cuando el mouse está sobre la tarjeta, rota el contenedor interno */
-.player-card:hover .player-card-inner {
-  transform: rotateY(180deg);
-}
-
-/* Estilos para el frente y reverso de la tarjeta */
-.card-front, .card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  -webkit-backface-visibility: hidden; /* Oculta la cara trasera al girar */
-  backface-visibility: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: inherit; /* Hereda el fondo de .player-card */
-  border-radius: inherit; /* Hereda el border-radius de .player-card */
-  padding: 1.5rem;
-  box-sizing: border-box; /* Asegura que el padding no afecte el tamaño */
-}
-
-.card-back {
-  transform: rotateY(180deg); /* Voltea la cara trasera inicialmente */
-  background: var(--secondary); /* Fondo diferente para el reverso */
-  color: var(--light);
-}
-
-/* Ajustes para las estadísticas en el reverso */
-.card-back .stats {
-  opacity: 1; /* Las stats siempre son visibles en el reverso */
-  transform: translateY(0);
-  font-size: 1rem;
-  line-height: 1.8;
-  color: #ccc;
-}
-
-/* Modificar el hover original de player-card para el nuevo efecto */
-.player-card:hover {
-  /* Quita el translate y box-shadow si no los quieres con el giro */
-  /* transform: translateY(-10px); */
-  box-shadow: 0 10px 25px rgba(231, 76, 60, 0.5); /* Mantener la sombra si te gusta */
-  border-color: var(--accent);
-}
-
-/* El brillo original ya no es necesario con el giro 3D, puedes borrarlo */
-/* .player-card::before { ... } */
-/* .player-card:hover::before { ... } */
-
-/* Y en la media query para móviles: */
-@media (max-width: 768px) {
-  /* ... tus estilos existentes ... */
-  .card-front, .card-back {
-    padding: 1rem; /* Ajustar padding para móviles */
   }
 }
