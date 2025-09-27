@@ -1,0 +1,95 @@
+/* ======================================================= */
+/* BLOQUE 1: VARIABLES GLOBALES Y RESET BÁSICO             */
+/* ======================================================= */
+:root {
+  --primary: #e74c3c;
+  --secondary: #2c3e50;
+  --accent: #f1c40f;
+  --light: #ecf0f1;
+  --dark: #1a1a1a;
+  --field-green: #27ae60;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ======================================================= */
+/* BLOQUE 2: ESTILOS GENERALES DEL BODY                    */
+/* ======================================================= */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, var(--dark), #0d0d0d);
+  color: var(--light);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ======================================================= */
+/* BLOQUE 3: ESTILOS DEL ENCABEZADO (HEADER)               */
+/* ======================================================= */
+header {
+  text-align: center;
+  padding: 2rem 1rem;
+  background: rgba(0, 0, 0, 0.7);
+  position: relative;
+  z-index: 10;
+}
+
+h1 {
+  font-size: 3.5rem;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(to right, var(--accent), var(--primary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: #bbb;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ======================================================= */
+/* BLOQUE 4: ESTILOS DEL ESTADIO Y PELOTA                  */
+/* ======================================================= */
+.stadium-bg {
+  height: 200px;
+  background: 
+    repeating-linear-gradient(
+      90deg,
+      var(--field-green),
+      var(--field-green) 50px,
+      #2ecc71 50px,
+      #2ecc71 100px
+    );
+  position: relative;
+  margin: 0 auto 3rem;
+  width: 90%;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  overflow: hidden;
+}
+
+/* Pelota animada */
+.ball {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  width: 60px;
+  height: 60px;
+  background: radial-gradient(circle, #fff 40%, #333 100%);
+  border-radius: 50%;
+  animation: bounce 3s infinite ease-in-out;
+  transform: translateX(-50%);
+}
+
+@keyframes bounce {
+  0%, 100% { top: -30px; }
+  50% { top: 150px; }
+}
