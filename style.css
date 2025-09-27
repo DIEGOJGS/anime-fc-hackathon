@@ -120,6 +120,13 @@ h1 {
   border-radius: 8px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.5);
   overflow: hidden;
+  /* --- MEJORA --- */
+  clip-path: inset(0 0 20% 0); /* Recorta un 20% de la parte de abajo */
+  transition: clip-path 0.4s ease-in-out;
+}
+
+.stadium-bg:hover {
+  clip-path: inset(0 0 0 0); /* Muestra el 100% de la altura al hacer hover */
 }
 
 .ball {
@@ -267,7 +274,25 @@ h1 {
   line-height: 1.8;
   color: #ccc;
 }
+/* Estilos para el marcador de goles */
+.score {
+  margin-top: 1rem;
+  font-size: 1.5rem;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
 
+.player-card:hover .score {
+  opacity: 1;
+  animation: goal 0.5s ease-in-out;
+}
+
+/* Animación para el gol */
+@keyframes goal {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.4) rotate(-15deg); }
+  100% { transform: scale(1); }
+}
 /* ======================================================= */
 /* BLOQUE 8: COLORES PERSONALIZADOS POR EQUIPO             */
 /* ======================================================= */
@@ -438,5 +463,18 @@ footer {
   }
   h1 {
     font-size: 2rem;
+  }
+}
+/* ======================================================= */
+/* BLOQUE FINAL: SOPORTE PARA MODO OSCURO DEL SISTEMA      */
+/* ======================================================= */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary: #e74c3c;
+    --secondary: #2c3e50;
+    --accent: #f1c40f;
+    --light: #ecf0f1;
+    --dark: #1a1a1a;
+    --field-green: #27ae60;
   }
 }
