@@ -47,6 +47,6 @@ Este proyecto fue un desafío para llevar HTML y CSS al límite. Algunas de las 
 
 1.  Clona el repositorio:
     ```bash
-    git clone [https://github.com/TU_USUARIO/TU_REPOSITORIO.git](https://github.com/TU_USUARIO/TU_REPOSITORIO.git)
+    git clone https://github.com/diegojgs/anime-fc-hackathon.git
     ```
 2.  Abre el archivo `index.html` en tu navegador.
